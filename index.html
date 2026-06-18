@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
-    <title>محاكي كأس العالم 2026 - التحديث الهيكلي الكامل</title>
+    <title>محاكي كأس العالم 2026 - التوزيع الرسمي الصحيح</title>
     <style>
         :root {
             --primary-color: #1a73e8;
@@ -65,8 +65,8 @@
         }
 
         select {
-            padding: 8px 12px;
-            font-size: 0.95rem;
+            padding: 6px 10px;
+            font-size: 0.9rem;
             border-radius: 4px;
             border: 1px solid var(--border-color);
             outline: none;
@@ -199,7 +199,7 @@
 
 <div class="container">
     <h1 id="group-title">المجموعة A</h1>
-    <p class="subtitle">أدخل نتائج مباريات الجولات الثلاث أدناه، وسيتم احتساب جدول الترتيب وأفضل الثوالث تلقائياً!</p>
+    <p class="subtitle">تم تصحيح الشجرة لتتوافق مع معايير الفيفا الرسمية لكأس العالم 2026.</p>
     
     <div class="selector-container">
         <select id="group-select" onchange="changeGroup()">
@@ -241,7 +241,7 @@
         <tbody id="table-body"></tbody>
     </table>
 
-    <h3>🏅 جدول مفاضلة أفضل ثوالث (يتأهل أول 8 فرق تلقائياً)</h3>
+    <h3>🏅 جدول أفضل الثوالث (للاستخدام اليدوي بالأسفل)</h3>
     <table>
         <thead>
             <tr>
@@ -262,28 +262,27 @@
 </div>
 
 <div class="container">
-    <h2>🏆 شجرة الأدوار الإقصائية (النظام الرسمي المكتمل لـ 48 فريقاً)</h2>
-    <p class="subtitle">أدخل أهداف المباريات الإقصائية لتصعيد الفائز تلقائياً</p>
+    <h2>🏆 شجرة الأدوار الإقصائية (المحدثة رسمياً)</h2>
 
-    <h3>1️⃣ دور الـ 32 (16 مباراة كاملة)</h3>
+    <h3>1️⃣ دور الـ 32</h3>
     <table id="ko-32-table">
         <thead><tr><th>المباراة</th><th>الفريق الأول</th><th>له</th><th>له</th><th>الفريق الثاني</th><th>المتأهل</th></tr></thead>
         <tbody id="ko32-body"></tbody>
     </table>
 
-    <h3>2️⃣ دور الـ 16 (ثمن النهائي - 8 مباريات)</h3>
+    <h3>2️⃣ دور الـ 16 (ثمن النهائي)</h3>
     <table id="ko-16-table">
         <thead><tr><th>المباراة</th><th>الفريق الأول</th><th>له</th><th>له</th><th>الفريق الثاني</th><th>المتأهل</th></tr></thead>
         <tbody id="ko16-body"></tbody>
     </table>
 
-    <h3>3️⃣ ربع النهائي (4 مباريات)</h3>
+    <h3>3️⃣ ربع النهائي</h3>
     <table id="ko-8-table">
         <thead><tr><th>المباراة</th><th>الفريق الأول</th><th>له</th><th>له</th><th>الفريق الثاني</th><th>المتأهل</th></tr></thead>
         <tbody id="ko8-body"></tbody>
     </table>
 
-    <h3>4️⃣ نصف النهائي (مباراتان)</h3>
+    <h3>4️⃣ نصف النهائي</h3>
     <table id="ko-4-table">
         <thead><tr><th>المباراة</th><th>الفريق الأول</th><th>له</th><th>له</th><th>الفريق الثاني</th><th>المتأهل</th></tr></thead>
         <tbody id="ko4-body"></tbody>
@@ -304,19 +303,18 @@
     const defaultTeams = {
         "A": ["🇲🇽 المكسيك", "🇰🇷 كوريا الجنوبية", "🇨🇿 التشيك", "🇿🇦 جنوب إفريقيا"],
         "B": ["🇨🇭 سويسرا", "🇨🇦 كندا", "🇶🇦 قطر", "🇧🇦 البوسنة والهرسك"],
-        "C": ["🇧🇷 البرازيل", "🇲🇦 المغرب", "🏴󠁧󠁢󠁳كتلندا", "🇭🇹 هايتي"],
+        "C": ["🇧🇷 البرازيل", "🇲🇦 المغرب", "🏴󠁧󠁢󠁳󠁣󠁴󠁿 سكوتلندا", "🇭🇹 هايتي"],
         "D": ["🇺🇸 الولايات المتحدة", "🇵🇾 باراغواي", "🇦🇺 أستراليا", "🇹🇷 تركيا"],
         "E": ["🇩🇪 ألمانيا", "🇨🇮 كوت ديفوار", "🇪🇨 الإكوادور", "🇨🇼 كوراساو"],
         "F": ["🇳🇱 هولندا", "🇯🇵 اليابان", "🇸🇪 السويد", "🇹🇳 تونس"],
         "G": ["🇧🇪 بلجيكا", "🇪🇬 مصر", "🇮🇷 إيران", "🇳🇿 نيوزيلندا"],
         "H": ["🇪🇸 إسبانيا", "🇺🇾 أوروغواي", "🇸🇦 السعودية", "🇨🇻 الرأس الأخضر"],
-        "I": ["🇫🇷 فرنسا", "🇸🇳 السنغال", "🇳🇴 النرويج", "🇮راق العراق"],
+        "I": ["🇫🇷 فرنسا", "🇸🇳 السنغال", "🇳🇴 النرويج", "🇮🇶 العراق"],
         "J": ["🇦🇷 الأرجنتين", "🇩🇿 الجزائر", "🇦🇹 النمسا", "🇯🇴 الأردن"],
         "K": ["🇵🇹 البرتغال", "🇨🇴 كولومبيا", "🇺🇿 أوزبكستان", "🇨🇩 الكونغو د"],
         "L": ["🏴󠁧󠁢󠁥󠁮󠁧󠁿 إنجلترا", "🇭🇷 كرواتيا", "🇬🇭 غانا", "🇵🇦 بنما"]
     };
 
-    // ترتيب مباريات دور المجموعات الثابت (6 مباريات لكل مجموعة - 3 جولات)
     const groupMatchesTemplate = [
         { round: "الجولة الأولى", i1: 0, i2: 1 }, { round: "الجولة الأولى", i1: 2, i2: 3 },
         { round: "الجولة الثانية", i1: 0, i2: 2 }, { round: "الجولة الثانية", i1: 1, i2: 3 },
@@ -325,58 +323,62 @@
 
     let worldCupMatches = {};
     let scoresData = { ko32: {}, ko16: {}, ko8: {}, ko4: {}, ko2: {} };
+    let manualThirdsSelections = {}; 
     let currentGroup = "A";
 
-    // الهيكلية الرسمية الكاملة المحدثة لدور الـ 32 لـ 48 فريقاً (16 مباراة)
-    // تتضمن أول وثاني المجموعات + مواضع دقيقة لأفضل 8 ثوالث (T3_0 إلى T3_7)
-    const setup32 = [
-        { id: 1,  type1: "first", g1: "A", type2: "third", g2: 0, label: "مباراة 1 (أول A × ثالث 1)" },
-        { id: 2,  type1: "second", g1: "B", type2: "second", g2: "C", label: "مباراة 2 (ثاني B × ثاني C)" },
-        { id: 3,  type1: "first", g1: "C", type2: "third", g2: 1, label: "مباراة 3 (أول C × ثالث 2)" },
-        { id: 4,  type1: "first", g1: "D", type2: "second", g2: "E", label: "مباراة 4 (أول D × ثاني E)" },
-        { id: 5,  type1: "first", g1: "E", type2: "third", g2: 2, label: "مباراة 5 (أول E × ثالث 3)" },
-        { id: 6,  type1: "second", g1: "F", type2: "second", g2: "G", label: "مباراة 6 (ثاني F × ثاني G)" },
-        { id: 7,  type1: "first", g1: "G", type2: "third", g2: 3, label: "مباراة 7 (أول G × ثالث 4)" },
-        { id: 8,  type1: "first", g1: "H", type2: "second", g2: "I", label: "مباراة 8 (أول H × ثاني I)" },
-        { id: 9,  type1: "first", g1: "I", type2: "third", g2: 4, label: "مباراة 9 (أول I × ثالث 5)" },
-        { id: 10, type1: "second", g1: "J", type2: "second", g2: "K", label: "مباراة 10 (ثاني J × ثاني K)" },
-        { id: 11, type1: "first", g1: "K", type2: "third", g2: 5, label: "مباراة 11 (أول K × ثالث 6)" },
-        { id: 12, type1: "first", g1: "L", type2: "second", g2: "A", label: "مباراة 12 (أول L × ثاني A)" },
-        { id: 13, type1: "first", g1: "B", type2: "third", g2: 6, label: "مباراة 13 (أول B × ثالث 7)" },
-        { id: 14, type1: "second", g1: "D", type2: "second", g2: "F", label: "مباراة 14 (ثاني D × ثاني F)" },
-        { id: 15, type1: "second", g1: "H", type2: "second", g2: "L", label: "مباراة 15 (ثاني H × ثاني L)" },
-        { id: 16, type1: "first", g1: "F", type2: "third", g2: 7, label: "مباراة 16 (أول F × ثالث 8)" }
+    // التعديل هنا: التوزيع الرسمي الصحيح للفيفا لتفادي مواجهة أول A للثوالث
+            const setup32 = [
+        // المسار الأيسر من الشجرة (8 مباريات من الأعلى لأسفل)
+        { id: 1,  type1: "first", g1: "E", type2: "third", label: "مباراة 1 (1E × 3 ABCDF)" },
+        { id: 2,  type1: "first", g1: "I", type2: "third", label: "مباراة 2 (1I × 3 ABCDF)" },
+        { id: 3,  type1: "second", g1: "A", type2: "second", g2: "B", label: "مباراة 3 (2A × 2B)" },
+        { id: 4,  type1: "first", g1: "F", type2: "second", g2: "C", label: "مباراة 4 (1F × 2C)" },
+        { id: 5,  type1: "second", g1: "K", type2: "second", g2: "L", label: "مباراة 5 (2K × 2L)" },
+        { id: 6,  type1: "first", g1: "H", type2: "second", g2: "J", label: "مباراة 6 (1H × 2J)" },
+        { id: 7,  type1: "first", g1: "D", type2: "third", label: "مباراة 7 (1D × 3 BEFIJ)" },
+        { id: 8,  type1: "first", g1: "G", type2: "second", g2: "A", label: "مباراة 8 (1G × 2 AEHIJ)" }, // تم تصحيحها إلى "ثاني" بدلاً من ثالث
+
+        // المسار الأيمن من الشجرة (8 مباريات من الأعلى لأسفل)
+        { id: 9,  type1: "first", g1: "C", type2: "second", g2: "F", label: "مباراة 9 (1C × 2F)" },
+        { id: 10, type1: "second", g1: "E", type2: "second", g2: "I", label: "مباراة 10 (2E × 2I)" },
+        { id: 11, type1: "first", g1: "A", type2: "third", label: "مباراة 11 (1A × 3 CEFHI)" },
+        { id: 12, type1: "first", g1: "L", type2: "third", label: "مباراة 12 (1L × 3 EHIJK)" },
+        { id: 13, type1: "first", g1: "J", type2: "second", g2: "H", label: "مباراة 13 (1J × 2H)" },
+        { id: 14, type1: "second", g1: "D", type2: "second", g2: "G", label: "مباراة 14 (2D × 2G)" },
+        { id: 15, type1: "first", g1: "B", type2: "third", label: "مباراة 15 (1B × 3 EFGIJ)" },
+        { id: 16, type1: "first", g1: "K", type2: "third", label: "مباراة 16 (1K × 3 DEIJL)" }
     ];
 
-    function initData() {
-        const storedMatches = localStorage.getItem('wc2026_matches');
-        const storedScores = localStorage.getItem('wc2026_scores');
 
-        if (storedMatches) {
-            worldCupMatches = JSON.parse(storedMatches);
-        } else {
-            // توليد مباريات فارغة لكل المجموعات
+
+    function initData() {
+        const storedMatches = localStorage.getItem('wc2026_matches_m4');
+        const storedScores = localStorage.getItem('wc2026_scores_m4');
+        const storedThirds = localStorage.getItem('wc2026_manual_thirds_m4');
+
+        if (storedMatches) worldCupMatches = JSON.parse(storedMatches);
+        else {
             Object.keys(defaultTeams).forEach(g => {
                 worldCupMatches[g] = groupMatchesTemplate.map(m => ({
-                    round: m.round,
-                    t1: defaultTeams[g][m.i1],
-                    t2: defaultTeams[g][m.i2],
-                    s1: "",
-                    s2: ""
+                    round: m.round, t1: defaultTeams[g][m.i1], t2: defaultTeams[g][m.i2], s1: "", s2: ""
                 }));
             });
-            localStorage.setItem('wc2026_matches', JSON.stringify(worldCupMatches));
+            localStorage.setItem('wc2026_matches_m4', JSON.stringify(worldCupMatches));
         }
 
-        if (storedScores) {
-            scoresData = JSON.parse(storedScores);
-        } else {
+        if (storedScores) scoresData = JSON.parse(storedScores);
+        else {
             setup32.forEach(m => scoresData.ko32[m.id] = { s1: "", s2: "" });
             for(let i=1; i<=8; i++) scoresData.ko16[i] = { s1: "", s2: "" };
             for(let i=1; i<=4; i++) scoresData.ko8[i] = { s1: "", s2: "" };
             for(let i=1; i<=2; i++) scoresData.ko4[i] = { s1: "", s2: "" };
             scoresData.ko2[1] = { s1: "", s2: "" };
-            localStorage.setItem('wc2026_scores', JSON.stringify(scoresData));
+            localStorage.setItem('wc2026_scores_m4', JSON.stringify(scoresData));
+        }
+
+        if (storedThirds) manualThirdsSelections = JSON.parse(storedThirds);
+        else {
+            setup32.forEach(m => { if(m.type2 === "third") manualThirdsSelections[m.id] = ""; });
         }
     }
 
@@ -389,28 +391,31 @@
 
     function updateGroupScore(matchIndex, field, value) {
         worldCupMatches[currentGroup][matchIndex][field] = value === "" ? "" : parseInt(value);
-        localStorage.setItem('wc2026_matches', JSON.stringify(worldCupMatches));
+        localStorage.setItem('wc2026_matches_m4', JSON.stringify(worldCupMatches));
         renderTable();
-        renderThirdsTable();
         renderAllKnockouts();
     }
 
     function updateStageScore(stage, matchId, field, value) {
         scoresData[stage][matchId][field] = value === "" ? "" : parseInt(value);
-        localStorage.setItem('wc2026_scores', JSON.stringify(scoresData));
+        localStorage.setItem('wc2026_scores_m4', JSON.stringify(scoresData));
+        renderAllKnockouts();
+    }
+
+    function updateManualThird(matchId, value) {
+        manualThirdsSelections[matchId] = value;
+        localStorage.setItem('wc2026_manual_thirds_m4', JSON.stringify(manualThirdsSelections));
         renderAllKnockouts();
     }
 
     function resetAllData() {
-        if(confirm("هل تريد تصفير المحاكي بالكامل وحذف كل الأهداف؟")) {
-            localStorage.removeItem('wc2026_matches');
-            localStorage.removeItem('wc2026_scores');
+        if(confirm("هل تريد تصفير المحاكي بالكامل؟")) {
+            localStorage.clear();
             initData();
             changeGroup();
         }
     }
 
-    // حساب إحصائيات المجموعات بناءً على أهداف المباريات المدخلة ديناميكياً
     function getSortedGroup(gLetter) {
         let teamsMap = {};
         defaultTeams[gLetter].forEach(name => {
@@ -419,51 +424,29 @@
 
         worldCupMatches[gLetter].forEach(m => {
             if (m.s1 !== "" && m.s2 !== "") {
-                teamsMap[m.t1].p++;
-                teamsMap[m.t2].p++;
-                teamsMap[m.t1].gf += m.s1;
-                teamsMap[m.t1].ga += m.s2;
-                teamsMap[m.t2].gf += m.s2;
-                teamsMap[m.t2].ga += m.s1;
+                teamsMap[m.t1].p++; teamsMap[m.t2].p++;
+                teamsMap[m.t1].gf += m.s1; teamsMap[m.t1].ga += m.s2;
+                teamsMap[m.t2].gf += m.s2; teamsMap[m.t2].ga += m.s1;
 
-                if (m.s1 > m.s2) {
-                    teamsMap[m.t1].w++;
-                    teamsMap[m.t2].l++;
-                    teamsMap[m.t1].pts += 3;
-                } else if (m.s1 < m.s2) {
-                    teamsMap[m.t2].w++;
-                    teamsMap[m.t1].l++;
-                    teamsMap[m.t2].pts += 3;
-                } else {
-                    teamsMap[m.t1].d++;
-                    teamsMap[m.t2].d++;
-                    teamsMap[m.t1].pts += 1;
-                    teamsMap[m.t2].pts += 1;
-                }
+                if (m.s1 > m.s2) { teamsMap[m.t1].w++; teamsMap[m.t2].l++; teamsMap[m.t1].pts += 3; }
+                else if (m.s1 < m.s2) { teamsMap[m.t2].w++; teamsMap[m.t1].l++; teamsMap[m.t2].pts += 3; }
+                else { teamsMap[m.t1].d++; teamsMap[m.t2].d++; teamsMap[m.t1].pts += 1; teamsMap[m.t2].pts += 1; }
             }
         });
 
         let teams = Object.values(teamsMap);
         teams.forEach(t => t.gd = t.gf - t.ga);
-
-        // الترتيب الرسمي: النقاط، الفارق، الأهداف له
         teams.sort((a, b) => {
             if (b.pts !== a.pts) return b.pts - a.pts;
             if (b.gd !== a.gd) return b.gd - a.gd;
             return b.gf - a.gf;
         });
-
         return teams;
     }
 
-    // تجميع الثوالث من المجموعات الـ 12 وفرزهم لحساب أفضل 8 ثوالث تلقائياً
-    function getSortedThirds() {
+    function getAllThirds() {
         let thirds = [];
-        Object.keys(defaultTeams).forEach(g => {
-            let sorted = getSortedGroup(g);
-            thirds.push(sorted[2]); // المركز الثالث
-        });
-        
+        Object.keys(defaultTeams).forEach(g => { thirds.push(getSortedGroup(g)[2]); });
         thirds.sort((a, b) => {
             if (b.pts !== a.pts) return b.pts - a.pts;
             if (b.gd !== a.gd) return b.gd - a.gd;
@@ -487,8 +470,7 @@
                         <span class="team-name">${m.t2}</span>
                         <input type="number" min="0" value="${m.s2}" oninput="updateGroupScore(${idx}, 's2', this.value)">
                     </div>
-                </div>
-            `;
+                </div>`;
         });
     }
 
@@ -496,15 +478,8 @@
         let teams = getSortedGroup(currentGroup);
         const tbody = document.getElementById('table-body');
         tbody.innerHTML = '';
-        
-        // جلب أفضل الثوالث حالياً لتحديد حال ثالت هذه المجموعة في العرض
-        let topThirds = getSortedThirds().slice(0, 8).map(t => t.name);
-
         teams.forEach((team, index) => {
-            let rowClass = 'eliminated';
-            if(index < 2) rowClass = 'qualified';
-            else if(index === 2 && topThirds.includes(team.name)) rowClass = 'qualified-third';
-
+            let rowClass = index < 2 ? 'qualified' : (index === 2 ? 'qualified-third' : 'eliminated');
             tbody.innerHTML += `
                 <tr class="${rowClass}">
                     <td class="fw-bold">${index + 1}</td>
@@ -517,17 +492,15 @@
                     <td><input type="number" value="${team.ga}" readonly></td>
                     <td class="fw-bold">${team.gd > 0 ? '+' + team.gd : team.gd}</td>
                     <td><input type="number" class="fw-bold" value="${team.pts}" readonly></td>
-                </tr>
-            `;
+                </tr>`;
         });
         renderThirdsTable();
     }
 
     function renderThirdsTable() {
-        let thirds = getSortedThirds();
+        let thirds = getAllThirds();
         const tbody = document.getElementById('thirds-table-body');
         tbody.innerHTML = '';
-
         thirds.forEach((team, index) => {
             let rowClass = index < 8 ? 'qualified-third' : 'eliminated';
             tbody.innerHTML += `
@@ -542,8 +515,7 @@
                     <td><input type="number" value="${team.ga}" readonly></td>
                     <td class="fw-bold">${team.gd > 0 ? '+' + team.gd : team.gd}</td>
                     <td><input type="number" class="fw-bold" value="${team.pts}" readonly></td>
-                </tr>
-            `;
+                </tr>`;
         });
     }
 
@@ -557,25 +529,31 @@
     let w32 = {}, w16 = {}, w8 = {}, w4 = {};
 
     function renderAllKnockouts() {
-        let thirdsSorted = getSortedThirds();
-        
-        // --- 1. بناء دور الـ 32 (16 مباراة) ---
+        let allThirdsTeams = getAllThirds(); 
         const b32 = document.getElementById('ko32-body'); b32.innerHTML = '';
+
         setup32.forEach(m => {
             let n1 = "", n2 = "";
             
-            // تحديد اسم الفريق الأول للمباراة
             if(m.type1 === "first") n1 = getSortedGroup(m.g1)[0].name;
             else if(m.type1 === "second") n1 = getSortedGroup(m.g1)[1].name;
 
-            // تحديد اسم الفريق الثاني للمباراة (ثاني أو أحد الثوالث المتأهلة من الـ 8 الأوائل)
-            if(m.type2 === "second") n2 = getSortedGroup(m.g2)[1].name;
-            else if(m.type2 === "third") {
-                n2 = thirdsSorted[m.g2] ? thirdsSorted[m.g2].name : `ثالث الترتيب ${m.g2+1}`;
+            if(m.type2 === "second") {
+                let targetGroup = m.g2 ? m.g2 : m.g1_2;
+                n2 = getSortedGroup(targetGroup)[1].name;
+            } else if(m.type2 === "third") {
+                let savedSelection = manualThirdsSelections[m.id] || "";
+                let optionsHtml = `<option value="">-- اختر ثالثاً --</option>`;
+                allThirdsTeams.forEach(t => {
+                    let selectedAttr = (t.name === savedSelection) ? "selected" : "";
+                    optionsHtml += `<option value="${t.name}" ${selectedAttr}>${t.name} (${t.group})</option>`;
+                });
+                n2 = `<select onchange="updateManualThird(${m.id}, this.value)">${optionsHtml}</select>`;
             }
 
             let s = scoresData.ko32[m.id] || {s1:"", s2:""};
-            w32[m.id] = getWinnerName(n1, n2, s.s1, s.s2);
+            let actualN2Name = (m.type2 === "third") ? (manualThirdsSelections[m.id] || "ثالث لم يحدد") : n2;
+            w32[m.id] = getWinnerName(n1, actualN2Name, s.s1, s.s2);
 
             b32.innerHTML += `
                 <tr>
@@ -583,111 +561,49 @@
                     <td><span class="auto-team">${n1}</span></td>
                     <td><input type="number" value="${s.s1}" oninput="updateStageScore('ko32', ${m.id}, 's1', this.value)"></td>
                     <td><input type="number" value="${s.s2}" oninput="updateStageScore('ko32', ${m.id}, 's2', this.value)"></td>
-                    <td><span class="auto-team">${n2}</span></td>
+                    <td>${m.type2 === 'third' ? n2 : `<span class="auto-team">${n2}</span>`}</td>
                     <td class="fw-bold" style="color:var(--success-color);">${w32[m.id] || "في الانتظار"}</td>
                 </tr>`;
         });
 
-        // --- 2. بناء دور الـ 16 (8 مباريات مكتملة بدون عجز) ---
+        // بقية الأدوار (16، 8، 4، النهائي) تتغير تلقائياً بناءً على مخرجات دور الـ 32 الجديدة
         const b16 = document.getElementById('ko16-body'); b16.innerHTML = '';
         const pairs16 = [[1,2], [3,4], [5,6], [7,8], [9,10], [11,12], [13,14], [15,16]];
-        
         pairs16.forEach((p, idx) => {
-            let id = idx + 1;
-            let n1 = w32[p[0]] || `فائز مباراة ${p[0]}`;
-            let n2 = w32[p[1]] || `فائز مباراة ${p[1]}`;
-            let s = scoresData.ko16[id] || {s1:"", s2:""};
-            w16[id] = getWinnerName(n1, n2, s.s1, s.s2);
-
-            b16.innerHTML += `
-                <tr>
-                    <td>ثمن نهائي ${id}</td>
-                    <td><span class="auto-team">${n1}</span></td>
-                    <td><input type="number" value="${s.s1}" oninput="updateStageScore('ko16', ${id}, 's1', this.value)"></td>
-                    <td><input type="number" value="${s.s2}" oninput="updateStageScore('ko16', ${id}, 's2', this.value)"></td>
-                    <td><span class="auto-team">${n2}</span></td>
-                    <td class="fw-bold" style="color:var(--success-color);">${w16[id] || "في الانتظار"}</td>
-                </tr>`;
+            let id = idx + 1; let n1 = w32[p[0]] || `مباراة ${p[0]}`; let n2 = w32[p[1]] || `مباراة ${p[1]}`;
+            let s = scoresData.ko16[id] || {s1:"", s2:""}; w16[id] = getWinnerName(n1, n2, s.s1, s.s2);
+            b16.innerHTML += `<tr><td>ثمن نهائي ${id}</td><td><span class="auto-team">${n1}</span></td><td><input type="number" value="${s.s1}" oninput="updateStageScore('ko16', ${id}, 's1', this.value)"></td><td><input type="number" value="${s.s2}" oninput="updateStageScore('ko16', ${id}, 's2', this.value)"></td><td><span class="auto-team">${n2}</span></td><td class="fw-bold" style="color:var(--success-color);">${w16[id] || "في الانتظار"}</td></tr>`;
         });
 
-        // --- 3. بناء ربع النهائي (4 مباريات هندسية مكتملة) ---
         const b8 = document.getElementById('ko8-body'); b8.innerHTML = '';
         const pairs8 = [[1,2], [3,4], [5,6], [7,8]];
-        
         pairs8.forEach((p, idx) => {
-            let id = idx + 1;
-            let n1 = w16[p[0]] || `فائز ثمن ${p[0]}`;
-            let n2 = w16[p[1]] || `فائز ثمن ${p[1]}`;
-            let s = scoresData.ko8[id] || {s1:"", s2:""};
-            w8[id] = getWinnerName(n1, n2, s.s1, s.s2);
-
-            b8.innerHTML += `
-                <tr>
-                    <td>ربع نهائي ${id}</td>
-                    <td><span class="auto-team">${n1}</span></td>
-                    <td><input type="number" value="${s.s1}" oninput="updateStageScore('ko8', ${id}, 's1', this.value)"></td>
-                    <td><input type="number" value="${s.s2}" oninput="updateStageScore('ko8', ${id}, 's2', this.value)"></td>
-                    <td><span class="auto-team">${n2}</span></td>
-                    <td class="fw-bold" style="color:var(--success-color);">${w8[id] || "في الانتظار"}</td>
-                </tr>`;
+            let id = idx + 1; let n1 = w16[p[0]] || `ثمن ${p[0]}`; let n2 = w16[p[1]] || `ثمن ${p[1]}`;
+            let s = scoresData.ko8[id] || {s1:"", s2:""}; w8[id] = getWinnerName(n1, n2, s.s1, s.s2);
+            b8.innerHTML += `<tr><td>ربع نهائي ${id}</td><td><span class="auto-team">${n1}</span></td><td><input type="number" value="${s.s1}" oninput="updateStageScore('ko8', ${id}, 's1', this.value)"></td><td><input type="number" value="${s.s2}" oninput="updateStageScore('ko8', ${id}, 's2', this.value)"></td><td><span class="auto-team">${n2}</span></td><td class="fw-bold" style="color:var(--success-color);">${w8[id] || "في الانتظار"}</td></tr>`;
         });
 
-        // --- 4. بناء نصف النهائي (مباراتان نظيفتان) ---
         const b4 = document.getElementById('ko4-body'); b4.innerHTML = '';
         const pairs4 = [[1,2], [3,4]];
-        
         pairs4.forEach((p, idx) => {
-            let id = idx + 1;
-            let n1 = w8[p[0]] || `فائز ربع ${p[0]}`;
-            let n2 = w8[p[1]] || `فائز ربع ${p[1]}`;
-            let s = scoresData.ko4[id] || {s1:"", s2:""};
-            w4[id] = getWinnerName(n1, n2, s.s1, s.s2);
-
-            b4.innerHTML += `
-                <tr>
-                    <td>نصف النهائي ${id}</td>
-                    <td><span class="auto-team">${n1}</span></td>
-                    <td><input type="number" value="${s.s1}" oninput="updateStageScore('ko4', ${id}, 's1', this.value)"></td>
-                    <td><input type="number" value="${s.s2}" oninput="updateStageScore('ko4', ${id}, 's2', this.value)"></td>
-                    <td><span class="auto-team">${n2}</span></td>
-                    <td class="fw-bold" style="color:var(--success-color);">${w4[id] || "في الانتظار"}</td>
-                </tr>`;
+            let id = idx + 1; let n1 = w8[p[0]] || `ربع ${p[0]}`; let n2 = w8[p[1]] || `ربع ${p[1]}`;
+            let s = scoresData.ko4[id] || {s1:"", s2:""}; w4[id] = getWinnerName(n1, n2, s.s1, s.s2);
+            b4.innerHTML += `<tr><td>نصف النهائي ${id}</td><td><span class="auto-team">${n1}</span></td><td><input type="number" value="${s.s1}" oninput="updateStageScore('ko4', ${id}, 's1', this.value)"></td><td><input type="number" value="${s.s2}" oninput="updateStageScore('ko4', ${id}, 's2', this.value)"></td><td><span class="auto-team">${n2}</span></td><td class="fw-bold" style="color:var(--success-color);">${w4[id] || "في الانتظار"}</td></tr>`;
         });
 
-        // --- 5. المباراة النهائية ---
         const b2 = document.getElementById('ko2-body'); b2.innerHTML = '';
-        let fin1 = w4[1] || "فائز نصف 1";
-        let fin2 = w4[2] || "فائز نصف 2";
-        let sFin = scoresData.ko2[1] || {s1:"", s2:""};
+        let fin1 = w4[1] || "نهائي 1"; let fin2 = w4[2] || "نهائي 2"; let sFin = scoresData.ko2[1] || {s1:"", s2:""};
         let champion = getWinnerName(fin1, fin2, sFin.s1, sFin.s2);
-
-        b2.innerHTML += `
-            <tr>
-                <td>النهائي الكبير</td>
-                <td><span class="auto-team">${fin1}</span></td>
-                <td><input type="number" value="${sFin.s1}" oninput="updateStageScore('ko2', 1, 's1', this.value)"></td>
-                <td><input type="number" value="${sFin.s2}" oninput="updateStageScore('ko2', 1, 's2', this.value)"></td>
-                <td><span class="auto-team">${fin2}</span></td>
-                <td class="fw-bold" style="color:#e67e22;">${champion || "في الانتظار"}</td>
-            </tr>`;
+        b2.innerHTML += `<tr><td>النهائي الكبير</td><td><span class="auto-team">${fin1}</span></td><td><input type="number" value="${sFin.s1}" oninput="updateStageScore('ko2', 1, 's1', this.value)"></td><td><input type="number" value="${sFin.s2}" oninput="updateStageScore('ko2', 1, 's2', this.value)"></td><td><span class="auto-team">${fin2}</span></td><td class="fw-bold" style="color:#e67e22;">${champion || "في الانتظار"}</td></tr>`;
 
         const champDiv = document.getElementById('champion-display');
         if(champion && champion !== "معلق (ركلات ترجيح)") {
-            champDiv.style.display = "block";
-            document.getElementById('champion-name').innerText = champion;
-        } else {
-            champDiv.style.display = "none";
-        }
+            champDiv.style.display = "block"; document.getElementById('champion-name').innerText = champion;
+        } else { champDiv.style.display = "none"; }
     }
 
-    // الإقلاع الأولي للبرنامج
     initData();
-    window.onload = function() {
-        renderGroupMatches();
-        renderTable();
-        renderAllKnockouts();
-    };
+    window.onload = function() { renderGroupMatches(); renderTable(); renderAllKnockouts(); };
 </script>
-
 </body>
 </html>
