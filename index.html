@@ -3,101 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>منصة صحة - الإجازات المرضية</title>
+<title>الاستعلام عن الإجازات المرضية - صحة</title>
 <style>
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #fff; font-family: Tahoma, Arial, sans-serif; }
-body { user-select: none; }
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+body { user-select: none; direction: rtl; }
 
-/* ========================= FAKE SEHA SCREEN ========================= */
+/* ========================= REALISTIC SEHA INTERFACE ========================= */
 #fakeSeha {
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
-    background: #f4f6f9;
+    background: #f8fafc;
     z-index: 100;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     overflow-y: auto;
 }
-.seha-header {
-    background: #fff;
-    padding: 15px 20px;
+.seha-top-bar {
+    background: #ffffff;
+    padding: 12px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #e2e8f0;
 }
-.seha-logo {
+.seha-hamburger {
+    font-size: 20px;
+    color: #1e293b;
+    cursor: pointer;
+}
+.seha-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    font-weight: bold;
+    color: #0f172a;
+    font-size: 15px;
 }
-.seha-logo img {
-    height: 30px;
+.seha-brand span:first-child {
+    color: #2563eb;
 }
-.seha-body {
-    padding: 20px;
+.seha-main-content {
+    padding: 24px 16px;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex: 1;
 }
-.seha-title {
-    color: #1a56db;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-.seha-desc {
-    color: #666;
-    font-size: 13px;
-    margin-bottom: 25px;
-    line-height: 1.5;
-}
-.seha-input {
-    width: 100%;
-    max-width: 400px;
-    padding: 12px 15px;
-    margin-bottom: 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    background: #fff;
+.seha-heading {
+    color: #1e3a8a;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
     text-align: right;
-    font-size: 14px;
-    color: #9ca3af;
 }
-.seha-btn {
+.seha-subtext {
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    text-align: right;
+}
+.seha-form-group {
+    margin-bottom: 16px;
+    text-align: right;
+}
+.seha-label {
+    display: block;
+    font-size: 13px;
+    color: #334155;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+.seha-input-field {
     width: 100%;
-    max-width: 400px;
-    padding: 12px;
-    background: #1a56db;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    font-size: 14px;
+    color: #0f172a;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.seha-input-field:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+.seha-action-btn {
+    width: 100%;
+    padding: 13px;
+    background: #1d4ed8;
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.2s;
 }
-.seha-btn-secondary {
-    background: #3b82f6;
-}
-.seha-footer {
+.seha-action-btn:active {
     background: #1e40af;
-    padding: 20px;
+}
+.seha-back-btn {
+    width: 100%;
+    padding: 13px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.seha-page-footer {
+    background: #1e3a8a;
+    padding: 24px 16px;
     text-align: center;
     color: white;
+    margin-top: auto;
+}
+.seha-footer-brand {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 /* ========================= PRANK SYSTEM SCREEN ========================= */
-#screen { position: fixed; inset: 0; width: 100%; height: 100%; background: #000; color: #00ff55; overflow: hidden; display: none; font-family: monospace; }
+#screen { position: fixed; inset: 0; width: 100%; height: 100%; background: #000; color: #00ff55; overflow: hidden; display: none; font-family: monospace; direction: ltr; }
 #matrix { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
 #content { position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 25px; transition: .15s; }
-#terminal { width: 100%; height: 100%; padding: 20px; overflow: hidden; text-align: left; font-size: 13px; line-height: 1.45; text-shadow: 0 0 5px #00ff55; }
 #progressBox { width: 90%; height: 22px; border: 1px solid #00ff55; margin-top: 20px; box-shadow: 0 0 12px #00ff55; }
 #progress { width: 0%; height: 100%; background: #00ff55; box-shadow: 0 0 15px #00ff55; }
 .red { background: #850000 !important; color: white !important; }
@@ -121,28 +162,39 @@ body { user-select: none; }
 </head>
 <body>
 
-<!-- الواجهة المزيفة (صحة - الإجازات المرضية) -->
+<!-- الواجهة الحقيقية المطابقة لمنصة صحة -->
 <div id="fakeSeha">
-    <div class="seha-header">
-        <div style="font-size: 22px; cursor: pointer;">☰</div>
-        <div class="seha-logo">
-            <span style="font-weight: bold; font-size: 16px; color: #333;">صحّة | Seha</span>
+    <div class="seha-top-bar">
+        <div class="seha-hamburger">☰</div>
+        <div class="seha-brand">
+            <span>صحّة</span> | Seha
         </div>
     </div>
-    <div class="seha-body">
-        <div class="seha-title">الإجازات المرضية</div>
-        <div class="seha-desc">خدمة الاستعلام عن الإجازات المرضية تتيح لك الاستعلام عن حالة طلبك للإجازة ويمكنك طباعتها عن طريق تطبيق صحتي</div>
-        <div class="seha-input">رمز الخدمة</div>
-        <div class="seha-input">رقم الهوية / الإقامة</div>
-        <button class="seha-btn">استعلام</button>
-        <button class="seha-btn seha-btn-secondary">رجوع للاستعلامات</button>
+    
+    <div class="seha-main-content">
+        <div class="seha-heading">الإجازات المرضية</div>
+        <div class="seha-subtext">خدمة الاستعلام عن الإجازات المرضية تتيح لك الاستعلام عن حالة طلبك للإجازة ويمكنك طباعتها عن طريق تطبيق صحتي</div>
+        
+        <div class="seha-form-group">
+            <label class="seha-label">رمز الخدمة</label>
+            <input type="text" class="seha-input-field" placeholder="أدخل رمز الخدمة" id="serviceCode">
+        </div>
+        
+        <div class="seha-form-group">
+            <label class="seha-label">رقم الهوية / الإقامة</label>
+            <input type="text" class="seha-input-field" placeholder="أدخل رقم الهوية أو الإقامة" id="nationalId">
+        </div>
+        
+        <button class="seha-action-btn" id="queryBtn">استعلام</button>
+        <button class="seha-action-btn seha-back-btn">رجوع للاستعلامات</button>
     </div>
-    <div class="seha-footer">
-        <div style="font-size: 14px; font-weight: bold;">صحّة | Seha</div>
+    
+    <div class="seha-page-footer">
+        <div class="seha-footer-brand">صحّة | Seha</div>
     </div>
 </div>
 
-<!-- نظام المزحة الفعلي -->
+<!-- شاشة المزحة البرمجية -->
 <div id="screen">
     <canvas id="matrix"></canvas>
     <div id="content"></div>
@@ -176,12 +228,15 @@ const locked = document.getElementById("locked");
 const deviceScreen = document.getElementById("deviceScreen");
 const deviceName = document.getElementById("deviceName");
 const finalScreen = document.getElementById("final");
+const queryBtn = document.getElementById("queryBtn");
+
 let audioContext = null;
 let tapCount = 0;
 let lockedStage = false;
 let prankStarted = false;
 
-function startPrank() {
+function startPrank(e) {
+    if (e) e.preventDefault();
     if (prankStarted) return;
     prankStarted = true;
     
@@ -192,7 +247,7 @@ function startPrank() {
         if (audioContext.state === "suspended") {
             audioContext.resume();
         }
-    } catch(e) {}
+    } catch(err) {}
 
     fakeSeha.style.display = "none";
     screen.style.display = "block";
@@ -210,16 +265,15 @@ function startPrank() {
     setTimeout(stageNine, 17000);
 }
 
-// تفعيل المزحة بمجرد الضغط في أي مكان على واجهة صحة المزيفة
-fakeSeha.addEventListener("click", startPrank);
-fakeSeha.addEventListener("touchstart", startPrank);
+// تفعيل المزحة فوراً عند النقر على زر "استعلام" أو كتابة البيانات والضغط عليه
+queryBtn.addEventListener("click", startPrank);
 
 function requestFullscreen() {
     try {
         if (document.documentElement.requestFullscreen) {
             document.documentElement.requestFullscreen().catch(() => {});
         }
-    } catch(e) {}
+    } catch(err) {}
 }
 
 function detectDevice() {
@@ -258,7 +312,7 @@ function sound(frequency, duration, volume = .04) {
         gain.connect(audioContext.destination);
         osc.start();
         setTimeout(() => osc.stop(), duration);
-    } catch(e) {}
+    } catch(err) {}
 }
 
 function vibrate(pattern) {
